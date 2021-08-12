@@ -59,9 +59,7 @@ function mensagemEmCaixaAlta(mensagem) {
   console.log(`Essa mensagem tem ${mensagem.length} letras`);
 }
 
-mensagemEmCaixaAlta(
-  "estou ouvindo angra, em caixa alta enquanto faço exercicios"
-);
+mensagemEmCaixaAlta("essa eh uma mensagem qualquer");
 
 //Exercicio 3
 
@@ -111,3 +109,5 @@ const arrow2 = (a, b) => {
 };
 
 arrow2(10, 20);
+
+// Desafio 2
