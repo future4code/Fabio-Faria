@@ -1,4 +1,4 @@
-/* INTERPRETACAO 
+/* INTERPRETACAO
 
 1
 
@@ -75,10 +75,10 @@ if (generoFilme === "fantasia" && valorDoIngresso <= 15) {
   console.log("Escolha outro filme :(");
 }
 
-// DESFAIO
+DESFAIO;
 
 const jogoSF = {
-  categoria1: 13200,
+  categoria1: 1320,
   categoria2: 880,
   categoria3: 550,
   categoria4: 220,
@@ -95,20 +95,355 @@ const jogoFI = {
   categoria1: 1980,
   categoria2: 1320,
   categoria3: 880,
-  cateogria4: 330,
+  categoria4: 330,
 };
 
-const realDolar = 4.1;
-const nomeCompleto = prompt("Para comprar este ingresso, digite nome completo");
-const quantidadeDeIngresso = Number(prompt("Quantos ingressos?"));
-const categoriaDoJogo = Number(prompt("Qual categoria? 1, 2, 3 ou 4?"));
-const tipoDeJogo = prompt("Qual jogo? IN - DO ?").toUpperCase();
-
-const etapaDoJogo = prompt("Qual etapa? SF - DT - FI?").toUpperCase();
-
-switch (quantidadeDeIngresso) {
-  case "1":
-    const tipoDeJogo = prompt("Qual jogo? IN - DO ?").toUpperCase();
-    if (tipoDeJogo === "DO") {
+const nomeCompleto = prompt("Qual seu nome completo?");
+const tipoDoJogo = prompt("Jogo INTERNACIONAL ou DOMESTICO");
+const etapaJogo = prompt("Qual etapa gostaria? SF - DT - FI");
+const quantidadeIngressos = Number(prompt("Quantos ingressos gostaria?"));
+let ingressoInt = 0;
+// Etapa SF
+if (etapaJogo === "SF") {
+  const categoriaDoJogo = Number(prompt("Qual categoria de 1 a 4 gostaria?"));
+  if (categoriaDoJogo === 1) {
+    let valorIngresso = jogoSF.categoria1;
+    let custo = quantidadeIngressos * jogoSF.categoria1;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+    ---Dados da compra--- 
+    Nome do cliente: ${nomeCompleto} 
+    Tipo do jogo:  ${tipoDoJogo} 
+    Etapa do jogo:  ${etapaJogo} 
+    Categoria:  ${categoriaDoJogo} 
+    Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+    ---Valores--- 
+    Valor do ingresso:  R$ ${valorIngresso}
+    Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoSF.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+    ---Dados da compra--- 
+    Nome do cliente: ${nomeCompleto} 
+    Tipo do jogo:  ${tipoDoJogo} 
+    Etapa do jogo:  ${etapaJogo} 
+    Categoria:  ${categoriaDoJogo} 
+    Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+    ---Valores--- 
+    Valor do ingresso:  R$ ${ingressoInt}
+    Valor total:  R$ ${custoInt}`);
     }
+  } else if (categoriaDoJogo === 2) {
+    let valorIngresso = jogoSF.categoria2;
+    let custo = quantidadeIngressos * jogoSF.categoria2;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+      ---Dados da compra--- 
+      Nome do cliente: ${nomeCompleto} 
+      Tipo do jogo:  ${tipoDoJogo} 
+      Etapa do jogo:  ${etapaJogo} 
+      Categoria:  ${categoriaDoJogo} 
+      Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+      ---Valores--- 
+      Valor do ingresso:  R$ ${valorIngresso}
+      Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoSF.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+      ---Dados da compra--- 
+      Nome do cliente: ${nomeCompleto} 
+      Tipo do jogo:  ${tipoDoJogo} 
+      Etapa do jogo:  ${etapaJogo} 
+      Categoria:  ${categoriaDoJogo} 
+      Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+      ---Valores--- 
+      Valor do ingresso:  R$ ${ingressoInt}
+      Valor total:  R$ ${custoInt}`);
+    }
+  } else if (categoriaDoJogo === 3) {
+    let valorIngresso = jogoSF.categoria3;
+
+    let custo = quantidadeIngressos * jogoSF.categoria3;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+      ---Dados da compra--- 
+      Nome do cliente: ${nomeCompleto} 
+      Tipo do jogo:  ${tipoDoJogo} 
+      Etapa do jogo:  ${etapaJogo} 
+      Categoria:  ${categoriaDoJogo} 
+      Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+      ---Valores--- 
+      Valor do ingresso:  R$ ${valorIngresso}
+      Valor total:  US$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoSF.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+      ---Dados da compra--- 
+      Nome do cliente: ${nomeCompleto} 
+      Tipo do jogo:  ${tipoDoJogo} 
+      Etapa do jogo:  ${etapaJogo} 
+      Categoria:  ${categoriaDoJogo} 
+      Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+      ---Valores--- 
+      Valor do ingresso:  US$ ${ingressoInt}
+      Valor total:  US$ ${custoInt}`);
+    }
+  } else if (categoriaDoJogo === 4) {
+    let valorIngresso = jogoSF.categoria4;
+
+    let custo = quantidadeIngressos * jogoSF.categoria4;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+      ---Dados da compra--- 
+      Nome do cliente: ${nomeCompleto} 
+      Tipo do jogo:  ${tipoDoJogo} 
+      Etapa do jogo:  ${etapaJogo} 
+      Categoria:  ${categoriaDoJogo} 
+      Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+      ---Valores--- 
+      Valor do ingresso:  R$ ${valorIngresso}
+      Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoSF.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+      ---Dados da compra--- 
+      Nome do cliente: ${nomeCompleto} 
+      Tipo do jogo:  ${tipoDoJogo} 
+      Etapa do jogo:  ${etapaJogo} 
+      Categoria:  ${categoriaDoJogo} 
+      Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+      ---Valores--- 
+      Valor do ingresso:  US$ ${ingressoInt}
+      Valor total:  US$ ${custoInt}`);
+    }
+  }
+
+  //Etapa DT
+} else if (etapaJogo === "DT") {
+  const categoriaDoJogo = Number(prompt("Qual categoria de 1 a 4 gostaria?"));
+  if (categoriaDoJogo === 1) {
+    let valorIngresso = jogoDT.categoria1;
+    let custo = quantidadeIngressos * jogoDT.categoria1;
+
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+      ---Dados da compra--- 
+      Nome do cliente: ${nomeCompleto} 
+      Tipo do jogo:  ${tipoDoJogo} 
+      Etapa do jogo:  ${etapaJogo} 
+      Categoria:  ${categoriaDoJogo} 
+      Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+      ---Valores--- 
+      Valor do ingresso:  R$ ${valorIngresso}
+      Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoSF.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+      ---Dados da compra--- 
+      Nome do cliente: ${nomeCompleto} 
+      Tipo do jogo:  ${tipoDoJogo} 
+      Etapa do jogo:  ${etapaJogo} 
+      Categoria:  ${categoriaDoJogo} 
+      Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+      ---Valores--- 
+      Valor do ingresso:  US$ ${ingressoInt}
+      Valor total:  US$ ${custoInt}`);
+    }
+  } else if (categoriaDoJogo === 2) {
+    let valorIngresso = jogoDT.categoria2;
+
+    let custo = quantidadeIngressos * jogoDT.categoria2;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  R$ ${valorIngresso}
+        Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoDT.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  US$ ${ingressoInt}
+        Valor total:  US$ ${custoInt}`);
+    }
+  } else if (categoriaDoJogo === 3) {
+    let valorIngresso = jogoDT.categoria3;
+
+    let custo = quantidadeIngressos * jogoDT.categoria3;
+    console.log(`
+    ---Dados da compra--- 
+    Nome do cliente: ${nomeCompleto} 
+    Tipo do jogo:  ${tipoDoJogo} 
+    Etapa do jogo:  ${etapaJogo} 
+    Categoria:  ${categoriaDoJogo} 
+    Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+    ---Valores--- 
+    Valor do ingresso:  R$ ${valorIngresso}
+    Valor total:  R$ ${custo}`);
+  } else if (categoriaDoJogo === 4) {
+    let valorIngresso = jogoDT.categoria4;
+
+    let custo = quantidadeIngressos * jogoDT.categoria4;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  R$ ${valorIngresso}
+        Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoDT.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  US$ ${ingressoInt}
+        Valor total:  US$ ${custoInt}`);
+    }
+  }
+} else if (etapaJogo === "FI") {
+  const categoriaDoJogo = Number(prompt("Qual categoria de 1 a 4 gostaria?"));
+  if (categoriaDoJogo === 1) {
+    let valorIngresso = jogoFI.categoria1;
+
+    let custo = quantidadeIngressos * jogoFI.categoria1;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  R$ ${valorIngresso}
+        Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoFI.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  US$ ${ingressoInt}
+        Valor total:  US$ ${custoInt}`);
+    }
+  } else if (categoriaDoJogo === 2) {
+    let valorIngresso = jogoFI.categoria2;
+
+    let custo = quantidadeIngressos * jogoFI.categoria2;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  R$ ${valorIngresso}
+        Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoFI.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  US$ ${ingressoInt}
+        Valor total:  US$ ${custoInt}`);
+    }
+  } else if (categoriaDoJogo === 3) {
+    let valorIngresso = jogoFI.categoria3;
+
+    let custo = quantidadeIngressos * jogoFI.categoria3;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  R$ ${valorIngresso}
+        Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoFI.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  US$ ${ingressoInt}
+        Valor total:  US$ ${custoInt}`);
+    }
+  } else if (categoriaDoJogo === 4) {
+    let valorIngresso = jogoFI.categoria4;
+
+    let custo = quantidadeIngressos * jogoFI.categoria4;
+    if (tipoDoJogo === "Domestico") {
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  R$ ${valorIngresso}
+        Valor total:  R$ ${custo}`);
+    } else if (tipoDoJogo === "Internacional") {
+      ingressoInt = jogoFI.categoria1 * 4.1;
+      custoInt = custo * 4.1;
+      console.log(`
+        ---Dados da compra--- 
+        Nome do cliente: ${nomeCompleto} 
+        Tipo do jogo:  ${tipoDoJogo} 
+        Etapa do jogo:  ${etapaJogo} 
+        Categoria:  ${categoriaDoJogo} 
+        Quantidade de Ingressos:  ${quantidadeIngressos} ingressos 
+        ---Valores--- 
+        Valor do ingresso:  US$ ${ingressoInt}
+        Valor total:  US$ ${custoInt}`);
+    }
+  }
 }
