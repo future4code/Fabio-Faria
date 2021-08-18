@@ -75,7 +75,7 @@ if (generoFilme === "fantasia" && valorDoIngresso <= 15) {
   console.log("Escolha outro filme :(");
 }
 
-DESFAIO;
+//DESFAIO
 
 const jogoSF = {
   categoria1: 1320,
