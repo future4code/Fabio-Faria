@@ -121,8 +121,8 @@ if (etapaJogo === "SF") {
     Valor do ingresso:  R$ ${valorIngresso}
     Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoSF.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoSF.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
     ---Dados da compra--- 
     Nome do cliente: ${nomeCompleto} 
@@ -149,8 +149,8 @@ if (etapaJogo === "SF") {
       Valor do ingresso:  R$ ${valorIngresso}
       Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoSF.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoSF.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
       ---Dados da compra--- 
       Nome do cliente: ${nomeCompleto} 
@@ -178,8 +178,8 @@ if (etapaJogo === "SF") {
       Valor do ingresso:  R$ ${valorIngresso}
       Valor total:  US$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoSF.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoSF.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
       ---Dados da compra--- 
       Nome do cliente: ${nomeCompleto} 
@@ -207,8 +207,8 @@ if (etapaJogo === "SF") {
       Valor do ingresso:  R$ ${valorIngresso}
       Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoSF.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoSF.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
       ---Dados da compra--- 
       Nome do cliente: ${nomeCompleto} 
@@ -241,8 +241,8 @@ if (etapaJogo === "SF") {
       Valor do ingresso:  R$ ${valorIngresso}
       Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoSF.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoSF.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
       ---Dados da compra--- 
       Nome do cliente: ${nomeCompleto} 
@@ -270,8 +270,8 @@ if (etapaJogo === "SF") {
         Valor do ingresso:  R$ ${valorIngresso}
         Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoDT.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoDT.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
         ---Dados da compra--- 
         Nome do cliente: ${nomeCompleto} 
@@ -313,8 +313,8 @@ if (etapaJogo === "SF") {
         Valor do ingresso:  R$ ${valorIngresso}
         Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoDT.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoDT.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
         ---Dados da compra--- 
         Nome do cliente: ${nomeCompleto} 
@@ -345,8 +345,8 @@ if (etapaJogo === "SF") {
         Valor do ingresso:  R$ ${valorIngresso}
         Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoFI.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoFI.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
         ---Dados da compra--- 
         Nome do cliente: ${nomeCompleto} 
@@ -374,8 +374,8 @@ if (etapaJogo === "SF") {
         Valor do ingresso:  R$ ${valorIngresso}
         Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoFI.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoFI.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
         ---Dados da compra--- 
         Nome do cliente: ${nomeCompleto} 
@@ -403,8 +403,8 @@ if (etapaJogo === "SF") {
         Valor do ingresso:  R$ ${valorIngresso}
         Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoFI.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoFI.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
         ---Dados da compra--- 
         Nome do cliente: ${nomeCompleto} 
@@ -432,8 +432,8 @@ if (etapaJogo === "SF") {
         Valor do ingresso:  R$ ${valorIngresso}
         Valor total:  R$ ${custo}`);
     } else if (tipoDoJogo === "Internacional") {
-      ingressoInt = jogoFI.categoria1 * 4.1;
-      custoInt = custo * 4.1;
+      ingressoInt = jogoFI.categoria1 / 4.1;
+      custoInt = custo / 4.1;
       console.log(`
         ---Dados da compra--- 
         Nome do cliente: ${nomeCompleto} 
