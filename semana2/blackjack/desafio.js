@@ -11,7 +11,7 @@
  * 
  */
 
-//EXERCICIO
+// EXERCICIO
 
 // console.log("Bem vindo ao Blackjack da Labenu!");
 
@@ -36,43 +36,63 @@
 //   console.log("O jogo acabou!");
 // }
 
-console.log("Bem vindo ao mais famoso BlackJack da Labenu!");
+//
+const cartasPlayer1 = [];
+const cartasPlayer2 = [];
+let player1pontos = 0;
+let player2pontos = 0;
 
-const iniciarOJogo = confirm("Deseja iniciar o jogo?");
+const rodada = (evaluate) => {
+  for (let i = 0; i < 2; i++) {
+    const player1 = comprarCarta();
+    cartasPlayer1.push(player1);
+    const player2 = comprarCarta();
+    cartasPlayer2.push(player2);
+  }
+};
 
-const player1Cartas = [];
-const player2Cartas = [];
-let player1Pontos = 0;
-let player2Pontos = 0;
+const evaluate = () => {
+  while (true) {
+    if (cartasPlayer1[0].text0 === "A" && cartasPlayer1[1].texto === "A") {
+      cartasPlayer1 = cartasPlayer1.splice(0, 2);
+      cartasPlayer2 = cartasPlayer2.splice(0, 2);
+      rodada();
+    } else if (
+      cartasPlayer2[0].text0 === "A" &&
+      cartasPlayer2[1].texto === "A"
+    ) {
+      cartasPlayer2 = cartasPlayer2.splice(0, 2);
+      cartasPlayer1 = cartasPlayer1.splice(0, 2);
+      rodada();
+    } else {
+      break;
+    }
+  }
+};
 
-switch (iniciarOJogo) {
-  case false:
-    console.log("Você desistiu! Volte sempre!");
-    break;
+const start = () => {
+  rodada(evaluate);
+  console.log(cartasPlayer1);
+  console.log(cartasPlayer2);
+};
+
+const iniciarJogo = confirm(`Voce gostaria de comecar o jogo?`);
+
+switch (iniciarJogo) {
   case true:
-    console.log("Vamos começar!");
-    player1 = comprarCarta();
-    player2 = comprarCarta();
-    player1Cartas.push(player1);
-    player2Cartas.push(player2);
-    console.log(player1Cartas[0].texto);
-    console.log(player2Cartas[0].texto);
-    if (player1Cartas[0][1] === "A" && player2Cartas[0][2] === "A") {
-      player1 = comprarCarta();
-      player2 = comprarCarta();
-      player1Cartas.push(player1);
-      player2Cartas.push(player2);
+    start();
+    switch (resposta) {
+      case true:
+        rodada();
+        break;
+      case false:
     }
-    const confirmarNovaRodada =
-      confirm(`Suas cartas sāo ${player1Cartas[0][1].texto}. A carta do computador é ${player2Cartas[0].texto}
-                                          Deseja comprar mais uma carta?`);
-    if (confirmarNovaRodada) {
-      player1.valor += player1Pontos;
-      player2.valor += player2Pontos;
-      console.log(player1Pontos);
-      console.log(player2Pontos);
-    }
-
-    console.log(player1Cartas[0].texto);
-    console.log(player2Cartas[0].texto);
+    break;
+  case false:
+    console.log("Teste");
 }
+
+const resposta = confirm(
+  `Suas cartas são ${cartasplayer1[0].texto} e ${cartasplayer1[1].texto}. A carta revelada do computador é ${cartasplayer2[0].texto}
+   Deseja comprar mais uma carta?`
+);
