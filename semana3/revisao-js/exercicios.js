@@ -170,4 +170,18 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 }
 
 // EXERCÍCIO 15B
-function retornaArrayOrdenadoPorData(consultas) {}
+//retorne um array de consultas ordenado pelas datas das consultas(da menor para a maior)
+function retornaArrayOrdenadoPorData(consultas) {
+  let consultasOrdenadas = consultas.sort((a, b) => {
+    let dataA = a.dataDaConsulta.split("/");
+    let dataB = b.dataDaConsulta.split("/");
+    let dataAcorrigida = new Date(dataA[2], dataA[1] - 1, dataA[0]);
+    let dataBcorrigida = new Date(dataB[2], dataB[1] - 1, dataB[0]);
+    if (dataAcorrigida > dataBcorrigida) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+  return consultasOrdenadas;
+}
