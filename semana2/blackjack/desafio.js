@@ -1,46 +1,50 @@
-/**
- * EXEMPLO DE UTILIZAÇÃO DA 'comprarCarta'
- * 
- * 
-    const carta = comprarCarta(); // Sorteia uma carta. Por exemplo, o rei de ouros
-    
-    console.log(carta.texto) // imprime o texto da carta. Exemplo: "K♦️" (indica "K" de ouros)
-    console.log(carta.valor) // imprime o valor da carta (um número). Exemplo: 10 (dado que "K" vale 10)
- * 
- * 
- * 
- */
+// /**
+//  * EXEMPLO DE UTILIZAÇÃO DA 'comprarCarta'
+//  *
+//  *
+//     const carta = comprarCarta(); // Sorteia uma carta. Por exemplo, o rei de ouros
 
-// EXERCICIO
+//     console.log(carta.texto) // imprime o texto da carta. Exemplo: "K♦️" (indica "K" de ouros)
+//     console.log(carta.valor) // imprime o valor da carta (um número). Exemplo: 10 (dado que "K" vale 10)
+//  *
+//  *
+//  *
+//  */
 
-// console.log("Bem vindo ao Blackjack da Labenu!");
+// // EXERCICIO
 
-// const confirmarNovaRodada = confirm("Quer iniciar uma nova rodada?");
-// if (confirmarNovaRodada) {
-//   const player1 = comprarCarta();
-//   console.log(
-//     `Usuario - cartas: ${player1.texto} - ponutaçāo: ${player1.valor}`
-//   );
-//   const computador = comprarCarta();
-//   console.log(
-//     `Usuario - cartas: ${computador.texto} - ponutaçāo: ${computador.valor}`
-//   );
-//   if (player1.valor === computador.valor) {
-//     console.log("Empate!!!");
-//   } else if (player1.valor > computador.valor) {
-//     console.log(`O player1 venceu!`);
-//   } else if (player1.valor < computador.valor) {
-//     console.log(`O player2 venceu!`);
-//   }
-// } else {
-//   console.log("O jogo acabou!");
-// }
+// // console.log("Bem vindo ao Blackjack da Labenu!");
 
-//
+// // const confirmarNovaRodada = confirm("Quer iniciar uma nova rodada?");
+// // if (confirmarNovaRodada) {
+// //   const player1 = comprarCarta();
+// //   console.log(
+// //     `Usuario - cartas: ${player1.texto} - ponutaçāo: ${player1.valor}`
+// //   );
+// //   const computador = comprarCarta();
+// //   console.log(
+// //     `Usuario - cartas: ${computador.texto} - ponutaçāo: ${computador.valor}`
+// //   );
+// //   if (player1.valor === computador.valor) {
+// //     console.log("Empate!!!");
+// //   } else if (player1.valor > computador.valor) {
+// //     console.log(`O player1 venceu!`);
+// //   } else if (player1.valor < computador.valor) {
+// //     console.log(`O player2 venceu!`);
+// //   }
+// // } else {
+// //   console.log("O jogo acabou!");
+// // }
+
+// DESAFIO
+
 const cartasPlayer1 = [];
 const cartasPlayer2 = [];
 let player1pontos = 0;
 let player2pontos = 0;
+let vencedor = "";
+
+const iniciarJogo = confirm(`Voce gostaria de comecar o jogo?`);
 
 const rodada = (evaluate) => {
   for (let i = 0; i < 2; i++) {
@@ -72,27 +76,42 @@ const evaluate = () => {
 
 const start = () => {
   rodada(evaluate);
-  console.log(cartasPlayer1);
-  console.log(cartasPlayer2);
 };
 
-const iniciarJogo = confirm(`Voce gostaria de comecar o jogo?`);
+const checarPontos = () => {
+  for (let i = 0; i < cartasPlayer1.length; i++) {
+    player1pontos += cartasPlayer1[i].valor;
+  }
+  for (let i = 0; i < cartasPlayer2.length; i++) {
+    player2pontos += cartasPlayer2[i].valor;
+  }
+};
 
-switch (iniciarJogo) {
-  case true:
-    start();
-    switch (resposta) {
-      case true:
-        rodada();
-        break;
-      case false:
-    }
+start();
+
+const checarVencedor = () => {
+  checarPontos();
+  if (player1pontos > player2pontos && player1pontos <= 21) {
+    vencedor = "usuario";
+  } else if (player2pontos > player1pontos && player2pontos <= 21) {
+    vencedor = `computador`;
+  } else if (player1pontos > 21) {
+    vencedor = `computador`;
+  } else if (player2pontos > 21) {
+    vencedor = `usuario`;
+  }
+};
+
+let continuar = true;
+
+while (continuar) {
+  const resposta = confirm(
+    `Suas cartas sāo ${cartasPlayer1[0].texto} ${cartasPlayer1[1].texto}. A carta revelada pelo computador é ${cartasPlayer2[0].texto}. Deseja comprar mais uma carta?`
+  );
+  if (resposta) {
+    checarVencedor();
+  } else {
+    checarVencedor();
     break;
-  case false:
-    console.log("Teste");
+  }
 }
-
-const resposta = confirm(
-  `Suas cartas são ${cartasplayer1[0].texto} e ${cartasplayer1[1].texto}. A carta revelada do computador é ${cartasplayer2[0].texto}
-   Deseja comprar mais uma carta?`
-);

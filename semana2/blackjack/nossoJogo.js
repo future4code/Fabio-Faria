@@ -19,11 +19,11 @@
 // if (confirmarNovaRodada) {
 //   const player1 = comprarCarta();
 //   console.log(
-//     `Usuario - cartas: ${player1.texto} - ponutaçāo: ${player1.valor}`
+//     `Usuario - cartas: ${player1.texto} - pontuaçāo: ${player1.valor}`
 //   );
 //   const computador = comprarCarta();
 //   console.log(
-//     `Usuario - cartas: ${computador.texto} - ponutaçāo: ${computador.valor}`
+//     `Usuario - cartas: ${computador.texto} - pontuaçāo: ${computador.valor}`
 //   );
 //   if (player1.valor === computador.valor) {
 //     console.log("Empate!!!");
@@ -36,4 +36,4 @@
 //   console.log("O jogo acabou!");
 // }
 
-// // DESAFIO
+// DESAFIO
