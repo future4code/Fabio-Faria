@@ -102,7 +102,15 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 }
 
 // EXERCÍCIO 10
-function retornaSegundoMaiorESegundoMenor(array) {}
+function retornaSegundoMaiorESegundoMenor(array) {
+  const segundoMaiorESegundoMenor = [];
+  array.sort((a, b) => {
+    return a - b;
+  });
+  segundoMaiorESegundoMenor.push(array[array.length - 2]);
+  segundoMaiorESegundoMenor.push(array[1]);
+  return segundoMaiorESegundoMenor;
+}
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {}
