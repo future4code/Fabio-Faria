@@ -1,0 +1,46 @@
+body {
+  background-color: lightblue;
+}
+
+.lojinha {
+  text-align: center;
+  font-size: 40px;
+  font-family: fantasy;
+  font-weight: bolder;
+}
+
+h2 {
+  font-family: fantasy;
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.anchor {
+  text-align: center;
+  padding: 10px;
+  box-sizing: content-box;
+  text-decoration: none;
+  border: 2px solid rgb(53, 10, 88);
+}
+
+a {
+  line-height: 1em;
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px;
+  margin: 20;
+}
+
+h2 {
+  text-align: center;
+}
+
+ul,
+li {
+  color: rgb(53, 10, 88);
+  text-align: center;
+  font-size: larger;
+  font-weight: bolder;
+  list-style-position: inside;
+}
