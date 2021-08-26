@@ -115,6 +115,13 @@ td button {
   color: black;
 }
 
+.search-bar {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+}
+
 .container-do-search {
   margin-top: 20px;
   height: 100px;
