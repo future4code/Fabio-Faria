@@ -59,6 +59,11 @@ div > p:first-child {
 
 button:hover {
   background-color: rgb(124, 99, 65);
+  color: white;
+}
+
+button:active {
+  color: white;
 }
 
 /** 
