@@ -57,6 +57,10 @@ div > p:first-child {
   width: 12px;
 }
 
+button:hover {
+  background-color: rgb(124, 99, 65);
+}
+
 /** 
   *
   *  ESTILOS HOME 
