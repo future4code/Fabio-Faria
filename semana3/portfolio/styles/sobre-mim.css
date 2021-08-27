@@ -1,0 +1,65 @@
+body {
+  padding: 2rem;
+  background: #f3f3f3;
+}
+
+body {
+  padding: 2rem;
+  background: #f3f3f3;
+}
+
+.essay {
+  padding: 2%;
+  border: 3px solid #333333;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  letter-spacing: 0.3ch;
+  background: #c7ccd3;
+  position: relative;
+  color: rgb(102, 35, 35);
+  margin-bottom: 3.42857rem;
+}
+
+table {
+  padding: 2%;
+  border: 3px solid #333;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  letter-spacing: 0.3ch;
+  background: #c7ccd3;
+  position: relative;
+  color: rgb(102, 35, 35);
+  text-align: center;
+  margin-left: 5%;
+}
+
+th {
+  padding: 2px;
+  padding-left: 50px;
+}
+
+#redes a {
+  background-color: rgb(47, 17, 75);
+  color: rgba(255, 255, 255, 0.884);
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 30%;
+  left: 30%;
+  top: 25px;
+  position: relative;
+}
+
+#redes a:hover {
+  background-color: rgb(26, 26, 65);
+}
+
+#redes a:active {
+  background-color: black;
+}
+
+h3 {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
