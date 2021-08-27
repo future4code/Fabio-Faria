@@ -75,41 +75,25 @@ a {
   position: relative;
   margin-left: 60%;
   bottom: 400px;
-  margin-bottom: 3.42857rem;
+  /* margin-bottom: 3.42857rem; */
   padding: 2%;
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: sticky;
   width: 100%;
-  height: 90px;
-  background-color: linear-gradient(
+  height: 10%; /* Height of the footer */
+  background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 17%,
     rgba(27, 27, 98, 1) 36%,
     rgba(24, 50, 117, 1) 57%,
     rgba(0, 212, 255, 1) 94%
   );
+  text-align: center;
 }
 
-.redes a {
-  background-color: rgb(47, 17, 75);
-  color: rgba(255, 255, 255, 0.884);
-  padding: 1em 1.5em;
-  text-decoration: none;
-  text-transform: uppercase;
-  border-radius: 30%;
-  left: 30%;
-  top: 25px;
-  position: relative;
-}
-
-.redes a:hover {
-  background-color: rgb(26, 26, 65);
-}
-
-.redes a:active {
-  background-color: black;
+.redes img {
+  width: 10%;
+  height: 10%;
 }
