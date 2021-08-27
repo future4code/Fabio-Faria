@@ -1,0 +1,103 @@
+html body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 17%,
+    rgba(27, 27, 98, 1) 36%,
+    rgba(24, 50, 117, 1) 57%,
+    rgba(0, 212, 255, 1) 94%
+  );
+  color: white;
+  margin: 0;
+  height: auto;
+}
+
+.infos {
+  border-bottom: 1px solid white;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1em;
+  padding: 18px;
+}
+
+.infos a {
+  background-color: rgb(31, 7, 54);
+  color: rgba(255, 255, 255, 0.884);
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 30%;
+  padding: 0.8%;
+  margin-bottom: 2%;
+}
+
+.infos a:hover {
+  background-color: rgb(26, 26, 65);
+}
+
+.infos a:active {
+  background-color: black;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Roboto Mono", monospace;
+}
+p {
+  text-align: center;
+  font-weight: bolder;
+  font-family: "Roboto Mono", monospace;
+}
+
+div img {
+  width: 450px;
+  height: 450px;
+}
+
+.container-resumo {
+  padding-bottom: 0px;
+}
+
+.container-resumo p {
+  border: 2px solid black;
+  position: relative;
+  margin-left: 60%;
+  bottom: 400px;
+  margin-bottom: 3.42857rem;
+  padding: 2%;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-color: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 17%,
+    rgba(27, 27, 98, 1) 36%,
+    rgba(24, 50, 117, 1) 57%,
+    rgba(0, 212, 255, 1) 94%
+  );
+}
+
+.redes a {
+  background-color: rgb(47, 17, 75);
+  color: rgba(255, 255, 255, 0.884);
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 30%;
+  left: 30%;
+  top: 25px;
+  position: relative;
+}
+
+.redes a:hover {
+  background-color: rgb(26, 26, 65);
+}
+
+.redes a:active {
+  background-color: black;
+}
