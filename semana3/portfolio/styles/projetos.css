@@ -1,0 +1,21 @@
+.videos {
+  text-align: center;
+  padding-top: 1%;
+}
+
+ul li {
+  list-style-position: inside;
+  text-align: inherit;
+}
+
+.description {
+  border: 3px solid #333333;
+  border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+  letter-spacing: 0.3ch;
+  background: #505a68;
+  padding: 2%;
+}
+
+p {
+  text-align: center;
+}
