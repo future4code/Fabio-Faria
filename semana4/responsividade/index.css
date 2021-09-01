@@ -30,13 +30,6 @@ header > a {
   color: black;
 }
 
-main {
-  display: flex;
-  height: 100vh;
-  background-color: #483e8b;
-  color: blanchedalmond;
-}
-
 footer {
   display: flex;
   background-color: #6291e9;
@@ -60,6 +53,8 @@ main {
   grid-template-rows: 1fr 1fr;
   gap: 10px;
   padding: 20px;
+  background-color: #483e8b;
+  color: blanchedalmond;
 }
 
 .item {
@@ -97,4 +92,28 @@ a {
   display: flex;
   justify-content: center;
   padding: 5px;
+}
+
+/* Responsividade */
+
+@media screen and (max-device-width: 800px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-device-width: 800px) {
+  .container-video {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+  }
+  .container-video > video {
+    width: 70vw;
+    height: 70vh;
+  }
 }
