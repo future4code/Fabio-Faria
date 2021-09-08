@@ -57,6 +57,11 @@ function App() {
           imagem="https://logodownload.org/wp-content/uploads/2014/09/twitter-logo-1-1.png"
           texto="Twitter"
         />
+
+        <ImagemButton
+          imagem="https://logodownload.org/wp-content/uploads/2019/03/linkedin-logo.png"
+          texto="LinkedIn"
+        />
       </div>
     </div>
   );
