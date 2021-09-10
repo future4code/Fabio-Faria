@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { IconeComContador } from "../IconeComContador/IconeComContador";
-
 import iconeCoracaoBranco from "../../img/favorite-white.svg";
 import iconeCoracaoPreto from "../../img/favorite.svg";
 import iconeComentario from "../../img/comment_icon.svg";
@@ -46,7 +45,7 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    comentario: "",
+    marcado: false,
   };
 
   onClickCurtida = () => {
