@@ -26,16 +26,14 @@ export class SecaoComentario extends Component {
   render() {
     return (
       <>
-        <form aoEnviar={this.onChangeComentario}>
-          <CommentContainer>
-            <InputComentario
-              placeholder={"Comentário"}
-              value={this.state.comentario}
-              onChange={this.onChangeComentario}
-            />
-            <button onClick={this.props.aoEnviar}>Enviar</button>
-          </CommentContainer>
-        </form>
+        <CommentContainer>
+          <InputComentario
+            placeholder={"Comentário"}
+            value={this.state.comentario}
+            onChange={this.onChangeComentario}
+          />
+          <button onClick={this.props.aoEnviar}>Enviar</button>
+        </CommentContainer>
       </>
     );
   }
