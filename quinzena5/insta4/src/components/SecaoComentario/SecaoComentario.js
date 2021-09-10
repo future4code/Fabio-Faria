@@ -19,19 +19,24 @@ export class SecaoComentario extends Component {
 
   onChangeComentario = (e) => {
     console.log(e.target.value);
+    e.preventDefault();
     this.setState({ comentario: e.target.value });
   };
 
   render() {
     return (
-      <CommentContainer>
-        <InputComentario
-          placeholder={"Comentário"}
-          value={this.state.comentario}
-          onChange={this.onChangeComentario}
-        />
-        <button onClick={this.props.aoEnviar}>Enviar</button>
-      </CommentContainer>
+      <>
+        <form aoEnviar={this.onChangeComentario}>
+          <CommentContainer>
+            <InputComentario
+              placeholder={"Comentário"}
+              value={this.state.comentario}
+              onChange={this.onChangeComentario}
+            />
+            <button onClick={this.props.aoEnviar}>Enviar</button>
+          </CommentContainer>
+        </form>
+      </>
     );
   }
 }

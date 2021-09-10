@@ -7,6 +7,7 @@ const MainContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-top: 5px;
 `;
 
 const DivAdicionar = styled.div`
@@ -14,6 +15,7 @@ const DivAdicionar = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-top: 20px;
+  border: 1px solid black;
 `;
 
 class App extends React.Component {
