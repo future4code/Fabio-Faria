@@ -1,28 +1,6 @@
 import React from "react";
-import styled from "styled-components";
+import "./styles/app.css";
 import User1 from "./components/User1";
-
-const DivChat = styled.div`
-  width: 70%;
-  height: 80vh;
-  margin-left: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  background-color: #f5f5f5;
-  box-sizing: border-box;
-`;
-
-const DivTexto = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-`;
-
-const InputsSeparados = styled.div`
-  display: flex;
-  justify-content: center;
-`;
 
 class App extends React.Component {
   state = {
@@ -48,36 +26,29 @@ class App extends React.Component {
         { nome: this.state.valorNome, mensagem: this.state.valorMensagem },
       ],
     });
-    this.limparCampos();
   };
-
-  limparCampos() {
-    this.state.valorMensagem = "";
-    this.state.valorNome = "";
-  }
 
   render() {
     const post = this.state.user.map((user) => {
+      let mensagem = `${user.nome} ${user.mensagem}`;
       return (
         <div>
-          <p>{user.nome}</p>
-          <p>{user.mensagem}</p>
+          <p>{mensagem}</p>
         </div>
       );
     });
 
     return (
       <>
-        <DivChat>
-          <DivTexto>{post}</DivTexto>
-        </DivChat>
-        <InputsSeparados>
-          <User1
-            mensagem={this.escreverUser}
-            user={this.escreverMensagem}
-            post={this.adicionarPost}
-          />
-        </InputsSeparados>
+        <div className="container-mensagem">
+          <div className="post-estilo">{post}</div>
+        </div>
+
+        <User1
+          user={this.escreverUser}
+          mensagem={this.escreverMensagem}
+          post={this.adicionarPost}
+        />
       </>
     );
   }

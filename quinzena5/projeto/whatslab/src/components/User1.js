@@ -17,7 +17,7 @@ class User1 extends React.Component {
           placeholder="Mensagem"
         />
         <button onClick={this.props.post} type="button">
-          Adicionar
+          Enviar
         </button>
       </div>
     );
