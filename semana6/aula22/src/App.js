@@ -41,6 +41,9 @@ class App extends React.Component {
   };
 
   criaTarefa = () => {
+    if (this.state.inputValue === "") {
+      alert("Digite uma tarefa");
+    }
     const tarefa = {
       id: Date.now(),
       texto: this.state.inputValue,
@@ -68,6 +71,20 @@ class App extends React.Component {
     this.setState({ filtro: event.target.value });
   };
 
+  removerTodasTarefas = () => {
+    this.setState({ tarefas: [] });
+  };
+
+  deletarTarefaSelecionada = (id) => {
+    const novaListaDeTarefasRemovendoTarefa = this.state.tarefas.filter(
+      (tarefa) => {
+        return id !== tarefa.id;
+      }
+    );
+
+    this.setState({ tarefas: novaListaDeTarefasRemovendoTarefa });
+  };
+
   render() {
     const listaFiltrada = this.state.tarefas.filter((tarefa) => {
       switch (this.state.filtro) {
@@ -85,7 +102,14 @@ class App extends React.Component {
         <h1>Lista de tarefas</h1>
         <InputsContainer>
           <input value={this.state.inputValue} onChange={this.onChangeInput} />
+
           <button onClick={this.criaTarefa}>Adicionar</button>
+          <button onClick={this.removerTodasTarefas}>
+            Remover Todas as Tarefas
+          </button>
+          <button onClick={this.deletarTarefaSelecionada}>
+            Deletar Tarefa Selecionada
+          </button>
         </InputsContainer>
         <br />
 
