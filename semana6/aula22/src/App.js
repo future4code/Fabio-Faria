@@ -18,6 +18,11 @@ const InputsContainer = styled.div`
   gap: 10px;
 `;
 
+const EstiloLabel = styled.label`
+  margin-left: 4px;
+  text-decoration: none;
+`;
+
 class App extends React.Component {
   state = {
     tarefas: [],
@@ -107,9 +112,6 @@ class App extends React.Component {
           <button onClick={this.removerTodasTarefas}>
             Remover Todas as Tarefas
           </button>
-          <button onClick={this.deletarTarefaSelecionada}>
-            Deletar Tarefa Selecionada
-          </button>
         </InputsContainer>
         <br />
 
@@ -130,6 +132,11 @@ class App extends React.Component {
                 key={tarefa.id}
               >
                 {tarefa.texto}
+                <input
+                  type="checkbox"
+                  onChange={() => this.deletarTarefaSelecionada(tarefa.id)}
+                />
+                <EstiloLabel htmlFor="Deletar Tarefa" />
               </Tarefa>
             );
           })}
