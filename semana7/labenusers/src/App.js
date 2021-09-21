@@ -31,7 +31,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getUsuarios();
-    this.setState({});
   }
 
   gerarValorNome = (event) => {
