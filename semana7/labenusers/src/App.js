@@ -14,12 +14,6 @@ const PosicaoContainer = styled.div`
   padding: 4px;
 `;
 
-const headers = {
-  headers: {
-    Authorization: "fabio-faria-maryam",
-  },
-};
-
 class App extends React.Component {
   state = {
     user: "",
@@ -45,42 +39,64 @@ class App extends React.Component {
     });
   };
 
-  getUsuarios = () => {
+  getUsuarios = async () => {
     const url =
       "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
-    axios
-      .get(url, headers)
-      .then((res) => {
-        this.setState({
-          user: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
+    // axios
+    //   .get(url, headers)
+    //   .then((res) => {
+    //     this.setState({
+    //       user: res.data,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    try {
+      const res = await axios.get(url, {
+        headers: {
+          Authorization: "fabio-faria-maryam",
+        },
       });
+      this.setState({ user: res.data });
+    } catch (err) {
+      alert("Aconteceu um problema, tente novamente.");
+    }
   };
 
-  gerarUsuario = () => {
+  gerarUsuario = async () => {
     const url =
       "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
     const body = {
       name: this.state.valorName,
       email: this.state.valorEmail,
     };
-    axios
-      .post(url, body, headers)
-      .then((res) => {
-        this.setState({
-          name: "",
-        });
-        this.setState({
-          email: "",
-        });
-        this.getUsuarios();
-      })
-      .catch((err) => {
-        console.log(err.result);
-      });
+
+    const res = await axios.post(url, body, {
+      headers: {
+        Authorization: "fabio-faria-maryam",
+      },
+    });
+    try {
+      this.setState({ user: res.data });
+      this.getUsuarios();
+    } catch (err) {
+      alert("Aconteceu um problema, tente novamente.");
+    }
+    // axios
+    //   .post(url, body, headers)
+    //   .then((res) => {
+    //     this.setState({
+    //       name: "",
+    //     });
+    //     this.setState({
+    //       email: "",
+    //     });
+    //     this.getUsuarios();
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.result);
+    //   });
   };
 
   mudarPagina = () => {
@@ -94,16 +110,32 @@ class App extends React.Component {
     });
   };
 
-  deletarItem = (id) => {
+  deletarItem = async (id) => {
     const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`;
-    axios
-      .delete(url, headers)
-      .then((res) => {
+
+    const confirmarDelete = window.confirm("Deseja mesmo deletar o usuario?");
+    if (confirmarDelete) {
+      try {
+        await axios.delete(url, {
+          headers: {
+            Authorization: "fabio-faria-maryam",
+          },
+        });
         this.getUsuarios();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      } catch (err) {
+        alert("Aconteceu um problema, tente novamente.");
+      }
+    } else {
+      alert("Usuario não deletado");
+    }
+    // axios
+    //   .delete(url, headers)
+    //   .then((res) => {
+    //     this.getUsuarios();
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   renderizarPagina = () => {
