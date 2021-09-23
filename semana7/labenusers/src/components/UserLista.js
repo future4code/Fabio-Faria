@@ -24,8 +24,13 @@ class UserLista extends React.Component {
     const usuarios = this.props.user.map((usuario) => {
       return (
         <li key={usuario.id}>
-          {usuario.name}{" "}
-          <button onClick={() => this.props.deletarItem(usuario.id)}>X</button>
+          {usuario.name}
+          <button onClick={() => this.props.detalharUser(usuario.id)}>
+            Detalhes do usuario
+          </button>
+          <button onClick={() => this.props.deletarItem(usuario.id)}>
+            Deletar
+          </button>
         </li>
       );
     });

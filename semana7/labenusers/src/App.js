@@ -3,6 +3,7 @@ import UserLista from "./components/UserLista";
 import axios from "axios";
 import styled from "styled-components";
 import PaginaInicial from "./components/PaginaInicial";
+import DetalhesUser from "./components/DetalhesUser";
 
 const PosicaoContainer = styled.div`
   display: flex;
@@ -18,9 +19,16 @@ class App extends React.Component {
   state = {
     user: "",
     email: "",
+    detalhesUsuario: [
+      {
+        id: 0,
+        name: "Teste",
+        email: "Teste@teste.com",
+      },
+    ],
     valorName: "",
     valorEmail: "",
-    verLista: false,
+    render: 0,
   };
 
   componentDidMount() {
@@ -42,16 +50,6 @@ class App extends React.Component {
   getUsuarios = async () => {
     const url =
       "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
-    // axios
-    //   .get(url, headers)
-    //   .then((res) => {
-    //     this.setState({
-    //       user: res.data,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
     try {
       const res = await axios.get(url, {
         headers: {
@@ -59,6 +57,29 @@ class App extends React.Component {
         },
       });
       this.setState({ user: res.data });
+    } catch (err) {
+      alert("Aconteceu um problema, tente novamente.");
+    }
+  };
+
+  getUsuarioId = (id) => {
+    this.setState({
+      render: 2,
+    });
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`;
+
+    const detalhe = [];
+    try {
+      const res = axios.get(url, {
+        headers: {
+          Authorization: "fabio-faria-maryam",
+        },
+      });
+      detalhe.push(res.data);
+      this.setState({
+        detalhesUsuario: detalhe,
+      });
+      console.log(this.state.detalhesUsuario);
     } catch (err) {
       alert("Aconteceu um problema, tente novamente.");
     }
@@ -83,30 +104,17 @@ class App extends React.Component {
     } catch (err) {
       alert("Aconteceu um problema, tente novamente.");
     }
-    // axios
-    //   .post(url, body, headers)
-    //   .then((res) => {
-    //     this.setState({
-    //       name: "",
-    //     });
-    //     this.setState({
-    //       email: "",
-    //     });
-    //     this.getUsuarios();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.result);
-    //   });
   };
 
-  mudarPagina = () => {
+  mudarRender = () => {
     this.setState({
-      verLista: true,
+      render: this.state.render + 1,
     });
   };
-  voltarPaginaInicial = () => {
+
+  voltarPagina = () => {
     this.setState({
-      verLista: false,
+      render: 0,
     });
   };
 
@@ -128,40 +136,44 @@ class App extends React.Component {
     } else {
       alert("Usuario não deletado");
     }
-    // axios
-    //   .delete(url, headers)
-    //   .then((res) => {
-    //     this.getUsuarios();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   };
 
   renderizarPagina = () => {
-    switch (this.state.verLista) {
-      case false:
+    switch (this.state.render) {
+      case 0:
         return (
           <PaginaInicial
-            mudarPagina={this.mudarPagina}
+            mudarPagina={this.mudarRender}
             gerarUsuario={this.gerarUsuario}
             gerarValorNome={this.gerarValorNome}
             gerarValorEmail={this.gerarValorEmail}
           />
         );
-      case true:
+      case 1:
         return (
           <UserLista
+            detalhes={this.state.detalhesUsuario[0]}
             user={this.state.user}
             key={this.state.name}
-            voltarPagina={this.voltarPaginaInicial}
+            voltarPagina={this.voltarPagina}
             deletarItem={this.deletarItem}
+            detalharUser={this.getUsuarioId}
+          />
+        );
+      case 2:
+        return (
+          <DetalhesUser
+            detalhes={this.state.detalhesUsuario[0]}
+            nome={this.state.user.name}
+            email={this.state.user.email}
+            voltarPagina={this.voltarPagina}
+            deletarItem={this.deletarItem}
+            detalharUser={this.getUsuarioId}
           />
         );
       default:
         return (
           <PaginaInicial
-            mudarPagina={this.mudarPagina}
             gerarUsuario={this.gerarUsuario}
             gerarValorNome={this.gerarValorNome}
             gerarValorEmail={this.gerarValorEmail}
