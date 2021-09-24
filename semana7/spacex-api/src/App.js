@@ -3,15 +3,17 @@ import axios from "axios";
 import styled from "styled-components";
 
 const GeneralStyling = styled.div`
+  font-family: "Roboto Mono", monospace;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: #031926;
   color: #f4e9cd;
   box-sizing: border-box;
-
-  h1 {
-    margin-left: 30%;
+  div:nth-child(2n) {
+    background-color: #468189;
   }
+
   a {
     color: #ebe374;
     text-decoration: none;
@@ -24,6 +26,8 @@ const MissionContainers = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 4px;
+  width: 70%;
+  padding: 8px;
 `;
 
 class App extends React.Component {
@@ -48,8 +52,12 @@ class App extends React.Component {
     const missionList = this.state.missions.map((mission) => {
       return (
         <MissionContainers key={mission.mission_id}>
-          <p>Mission: {mission.mission_name}</p>
-          <p>Details: {mission.description}</p>
+          <p>
+            <b>Mission:</b> {mission.mission_name}
+          </p>
+          <p>
+            <b>Details:</b> {mission.description}
+          </p>
           <a href={mission.twitter}>Link para Twitter</a>
           <hr />
         </MissionContainers>
