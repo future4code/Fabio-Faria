@@ -10,7 +10,7 @@ const ProfileCard = (props) => {
         m="4"
         rounded="md"
         borderRadius="full"
-        boxSize="80%"
+        boxSize={["80%", "100%"]}
         objectFit="contain"
         src={props.photo}
         alt=""

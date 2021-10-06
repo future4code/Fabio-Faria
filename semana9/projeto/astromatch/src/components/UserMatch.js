@@ -59,8 +59,8 @@ const UserMatch = (props) => {
   return (
     <Flex minH="100%">
       <Container
-        w="100%"
-        h="100%"
+        w={["100%", "100%"]}
+        h={["100%", "90%"]}
         bg="#fff"
         maxW="container.sm"
         centerContent
