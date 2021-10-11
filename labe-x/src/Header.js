@@ -1,8 +1,8 @@
-const Header = () => {
+const Header = (props) => {
   return (
     <div>
       <h1>Header</h1>
-      <button>Home</button>
+      <button onClick={() => props.changePage("homePage")}>Home</button>
     </div>
   );
 };
