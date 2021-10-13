@@ -1,29 +1,21 @@
-import { useGetTrips } from "../hooks/CustomHooks";
+import { useHistory } from "react-router-dom";
 
-const HomePage = (props) => {
-  const { trips, loading, error } = useGetTrips(
-    "https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria-maryam/trips"
-  );
+const HomePage = () => {
+  const history = useHistory();
 
-  const renderTrips =
-    trips &&
-    trips.map((trip) => {
-      return (
-        <div key={trip.id}>
-          <li>{trip.name}</li>
-        </div>
-      );
-    });
+  const goToTrips = () => {
+    history.push("/ListTripsPage");
+  };
+
+  const goToAdmin = () => {
+    history.push("/AdminHomePage");
+  };
 
   return (
     <div>
       <h1>Home Page</h1>
-      {loading && <h1>Loading...</h1>}
-      {error && <h1>Error</h1>}
-      {renderTrips}
-      <button onClick={() => props.changePage("apply")}>
-        Apply for a Trip
-      </button>
+      <button onClick={goToTrips}>Trips</button>
+      <button onClick={goToAdmin}>Admin</button>
     </div>
   );
 };

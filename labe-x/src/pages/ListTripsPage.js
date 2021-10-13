@@ -1,15 +1,15 @@
 import { useGetTrips, useGoHome } from "../hooks/CustomHooks";
 import { useHistory } from "react-router-dom";
 
-const AdminHomePage = () => {
+const ListTripsPage = () => {
   const [trips, isLoading, error] = useGetTrips(
     "https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria-maryam/trips"
   );
 
   const history = useHistory();
 
-  const showTripDetails = (id) => {
-    history.push(`/Details/${id}`);
+  const goToApplicationForm = () => {
+    history.push("/applicationForm");
   };
 
   const goHome = useGoHome();
@@ -22,21 +22,21 @@ const AdminHomePage = () => {
           <li>{trip.name}</li>
           <li>{trip.planet}</li>
 
-          <button>X</button>
-          <button onClick={() => showTripDetails(trip.id)}>Details</button>
           <br />
         </div>
       );
     });
+
   return (
     <div>
-      <h1>Admin Home Page</h1>
+      <h1>Trips</h1>
       {isLoading && <p>Loading...</p>}
       {!isLoading && error && <p>Erro</p>}
       {!isLoading && !error && showTrips}
+      <button onClick={goToApplicationForm}>Apply for a Trip</button>
       <button onClick={goHome}>Home</button>
     </div>
   );
 };
 
-export default AdminHomePage;
+export default ListTripsPage;
