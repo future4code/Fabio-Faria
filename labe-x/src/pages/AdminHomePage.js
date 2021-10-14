@@ -1,4 +1,4 @@
-import { useGetTrips, useGoHome } from "../hooks/CustomHooks";
+import { useGetTrips, useGoHome, useProtectPage } from "../hooks/CustomHooks";
 import { useHistory } from "react-router-dom";
 
 const AdminHomePage = () => {
@@ -12,7 +12,17 @@ const AdminHomePage = () => {
     history.push(`/Details/${id}`);
   };
 
+  const createTrip = () => {
+    history.push("/CreateTrip");
+  };
+
+  const goBack = () => {
+    history.goBack();
+  };
+
   const goHome = useGoHome();
+
+  useProtectPage();
 
   const showTrips =
     trips &&
@@ -34,7 +44,9 @@ const AdminHomePage = () => {
       {isLoading && <p>Loading...</p>}
       {!isLoading && error && <p>Erro</p>}
       {!isLoading && !error && showTrips}
+      <button onClick={createTrip}>Create a Trip</button>
       <button onClick={goHome}>Home</button>
+      <button onClick={goBack}>Previous Page</button>
     </div>
   );
 };

@@ -28,7 +28,7 @@ export const useGetDetails = (url, initialState) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const headers = {
-    auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlNPSzRMMTlHYXlBdU8yM1IzUGxvIiwiZW1haWwiOiJmYWJpb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE2MzQxNTA2ODV9.V9um_9ohSaWN8CMiAMmBZRXhfxvDdZDpHA2qjsZXjcU",
+    auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlpPbFh5akVMYlA2R1J0cXFhejd4IiwiZW1haWwiOiJmYWJpb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE2MzQyMjU0MTh9.5OluR28aYyZyslC3SubSiI6fqJqz8EcFld4wUsMTsGk",
   };
   useEffect(() => {
     setIsLoading(true);
@@ -52,4 +52,15 @@ export const useGoHome = () => {
     history.push("/");
   };
   return goHome;
+};
+
+export const useProtectPage = () => {
+  const history = useHistory();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("You must log in first!");
+      history.push("/LoginPage");
+    }
+  }, []);
 };

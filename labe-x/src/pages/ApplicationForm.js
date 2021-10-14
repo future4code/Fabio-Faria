@@ -1,5 +1,8 @@
 import { useGoHome, useGetTrips } from "../hooks/CustomHooks";
 import { useState } from "react";
+import { countries } from "../countries";
+
+import axios from "axios";
 
 const ApplicationForm = () => {
   const [applicationName, setApplicationName] = useState("");
@@ -35,20 +38,36 @@ const ApplicationForm = () => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    const application = {
+
+    const body = {
       name: applicationName,
       age: applicationAge,
-      reason: applicationReason,
+      applicationText: applicationReason,
       profession: applicationProfession,
-      tripId: applicationTrip,
       country: applicationCountry,
     };
-
-    console.log(application);
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    axios
+      .post(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria/trips/${applicationTrip}/apply`,
+        body,
+        headers
+      )
+      .then(() => {
+        alert("Sucesso!");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+    console.log(body);
   };
   const goHome = useGoHome();
 
-  const [trips] = useGetTrips();
+  const [trips] = useGetTrips(
+    "https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria/trips"
+  );
 
   return (
     <div>
@@ -83,23 +102,32 @@ const ApplicationForm = () => {
           type="text"
           placeholder="Profession"
         />
-        <select name="countries">
-          <option value={applicationCountry}>Select a country</option>
-          {trips &&
-            trips.map((trip) => (
-              <option onChange={handleCountryChange} value={trip.id}>
-                {trip.country}
+        <select
+          onChange={handleCountryChange}
+          value={applicationCountry}
+          name="countries"
+        >
+          <option value="">Select a country</option>
+          {countries.map((country) => {
+            return (
+              <option value={country.name} key={country.name}>
+                {country.name}
               </option>
-            ))}
+            );
+          })}
         </select>
-        <select name="trips">
-          <option value={applicationTrip}>Select a trip</option>
+        <select
+          onChange={handleTripIdChange}
+          value={applicationTrip}
+          name="trips"
+        >
+          <option value="">Select a trip</option>
           {trips &&
             trips.map((trip) => {
               return (
-                <select>
-                  <li>{trip.id}</li>
-                </select>
+                <option value={trip.id} key={trip.id}>
+                  {trip.name}
+                </option>
               );
             })}
         </select>

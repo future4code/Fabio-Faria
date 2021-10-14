@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 const ListTripsPage = () => {
   const [trips, isLoading, error] = useGetTrips(
-    "https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria-maryam/trips"
+    "https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria/trips"
   );
 
   const history = useHistory();
