@@ -1,6 +1,7 @@
-import { useGoHome } from "../hooks/CustomHooks";
+import { useGoHome, useProtectPage } from "../hooks/CustomHooks";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 const CreateTripPage = () => {
   const [applicationName, setApplicationName] = useState("");
@@ -9,6 +10,7 @@ const CreateTripPage = () => {
   const [applicationDate, setApplicationDate] = useState("");
   const [applicationTime, setApplicationTime] = useState(0);
 
+  const token = window.localStorage.getItem("token");
   const handleApplicationName = (event) => {
     setApplicationName(event.target.value);
   };
@@ -31,16 +33,35 @@ const CreateTripPage = () => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    const tripCreator = {
+    const body = {
       name: applicationName,
       planet: applicationPlanet,
       date: applicationDate,
       description: applicationDescription,
-      time: applicationTime,
+      durationInDays: Number(applicationTime),
     };
-    console.log(tripCreator);
-  };
 
+    const header = {
+      headers: {
+        auth: token,
+      },
+    };
+
+    axios
+      .post(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria/trips",
+        body,
+        header
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+    console.log(body);
+  };
+  useProtectPage();
   const history = useHistory();
   const goHome = useGoHome();
   const goBack = () => {
@@ -84,7 +105,7 @@ const CreateTripPage = () => {
           rows="10"
           placeholder="Description"
         ></textarea>
-        <label htmlFor="Duration">Duration in Days</label>
+        <label htmlFor="Duration">Duration</label>
         <input
           onChange={handleApplicationTime}
           type="number"

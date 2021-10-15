@@ -61,7 +61,6 @@ const ApplicationForm = () => {
       .catch((error) => {
         console.log(error.message);
       });
-    console.log(body);
   };
   const goHome = useGoHome();
 
@@ -79,6 +78,7 @@ const ApplicationForm = () => {
           onChange={handleNameChange}
           type="text"
           placeholder="Name"
+          required
         />
         <label htmlFor="age">Age: </label>
         <input
@@ -87,6 +87,7 @@ const ApplicationForm = () => {
           type="number"
           placeholder="Age"
           min="18"
+          required
         />
         <label htmlFor="reason">Why you wan't to go: </label>
         <input
@@ -94,6 +95,7 @@ const ApplicationForm = () => {
           onChange={handleReasonChange}
           type="text"
           placeholder="Reason"
+          required
         />
         <label htmlFor="profession">Profession:</label>
         <input
@@ -101,11 +103,13 @@ const ApplicationForm = () => {
           onChange={handleProfessionChange}
           type="text"
           placeholder="Profession"
+          required
         />
         <select
           onChange={handleCountryChange}
           value={applicationCountry}
           name="countries"
+          required
         >
           <option value="">Select a country</option>
           {countries.map((country) => {

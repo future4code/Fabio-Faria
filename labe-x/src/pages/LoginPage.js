@@ -49,9 +49,9 @@ const LoginPage = () => {
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>Email: </label>
-        <input onChange={handleUserNameChange} type="email" />
+        <input onChange={handleUserNameChange} type="email" required />
         <label>Password: </label>
-        <input onChange={handlePasswordChange} type="password" />
+        <input onChange={handlePasswordChange} type="password" required />
         <button type="submit">Submit</button>
       </form>
       <button onClick={goHome}>Home</button>

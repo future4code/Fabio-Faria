@@ -7,7 +7,7 @@ export const useGetTrips = (url) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
+  const getTrips = () => {
     setIsLoading(true);
     axios
       .get(url)
@@ -19,18 +19,22 @@ export const useGetTrips = (url) => {
         setIsLoading(false);
         setError(err.message);
       });
+  };
+  useEffect(() => {
+    getTrips();
   }, [url]);
-  return [trips, isLoading, error];
+  return [trips, isLoading, error, getTrips];
 };
 
 export const useGetDetails = (url, initialState) => {
   const [trip, setTrip] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const token = window.localStorage.getItem("token");
   const headers = {
-    auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlpPbFh5akVMYlA2R1J0cXFhejd4IiwiZW1haWwiOiJmYWJpb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE2MzQyMjU0MTh9.5OluR28aYyZyslC3SubSiI6fqJqz8EcFld4wUsMTsGk",
+    auth: token,
   };
-  useEffect(() => {
+  const tripDetails = () => {
     setIsLoading(true);
     axios
       .get(url, { headers })
@@ -42,8 +46,12 @@ export const useGetDetails = (url, initialState) => {
         setIsLoading(false);
         setError(err.message);
       });
+  };
+  useEffect(() => {
+    tripDetails();
   }, [url]);
-  return [trip, isLoading, error];
+
+  return [trip, isLoading, error, tripDetails];
 };
 
 export const useGoHome = () => {
@@ -63,4 +71,17 @@ export const useProtectPage = () => {
       history.push("/LoginPage");
     }
   }, []);
+};
+
+export const useForm = (initialState) => {
+  const [form, setForm] = useState(initialState);
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+  const cleanInputs = () => {
+    setForm(initialState);
+  };
+  return [form, onChange, cleanInputs];
 };

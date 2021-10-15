@@ -1,11 +1,14 @@
 import { useGetTrips, useGoHome } from "../hooks/CustomHooks";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 const ListTripsPage = () => {
-  const [trips, isLoading, error] = useGetTrips(
+  const [trips, isLoading, error, getTrips] = useGetTrips(
     "https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria/trips"
   );
-
+  useEffect(() => {
+    getTrips();
+  }, []);
   const history = useHistory();
 
   const goToApplicationForm = () => {
