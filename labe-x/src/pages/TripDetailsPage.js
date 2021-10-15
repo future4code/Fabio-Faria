@@ -126,7 +126,9 @@ const TripDetailsPage = () => {
       <br />
       <h2>Approved Candidates:</h2>
 
-      {showApprovedCandidates}
+      {approved || showApprovedCandidates}
+      {!approved && showApprovedCandidates}
+
       <br />
 
       <button onClick={goBack}>Voltar</button>

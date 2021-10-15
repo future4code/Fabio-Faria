@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import loginPageImage from "../style/images/loginPageImage.svg";
+import { LoginPageContainer } from "../style/style";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -45,7 +47,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <LoginPageContainer>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>Email: </label>
@@ -55,7 +57,8 @@ const LoginPage = () => {
         <button type="submit">Submit</button>
       </form>
       <button onClick={goHome}>Home</button>
-    </div>
+      <img src={loginPageImage} alt="LoginPage" />
+    </LoginPageContainer>
   );
 };
 

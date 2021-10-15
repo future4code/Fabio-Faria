@@ -1,4 +1,6 @@
 import { useHistory } from "react-router-dom";
+import { AppContainer, AppContainerInner } from "../style/style";
+import homePage from "../style/images/homePage.svg";
 
 const HomePage = () => {
   const history = useHistory();
@@ -12,11 +14,13 @@ const HomePage = () => {
   };
 
   return (
-    <div>
-      <h1>Home Page</h1>
-      <button onClick={goToTrips}>Trips</button>
-      <button onClick={goToAdmin}>Admin</button>
-    </div>
+    <AppContainer>
+      <AppContainerInner>
+        <img src={homePage} alt="homePage" />
+        <button onClick={goToTrips}>Trips</button>
+        <button onClick={goToAdmin}>Admin</button>
+      </AppContainerInner>
+    </AppContainer>
   );
 };
 

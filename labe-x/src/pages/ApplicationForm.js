@@ -1,6 +1,8 @@
 import { useGoHome, useGetTrips } from "../hooks/CustomHooks";
 import { useState } from "react";
 import { countries } from "../countries";
+import applyForm from "../style/images/applyForm.svg";
+import { TripFormContainer, TripForm } from "../style/style";
 
 import axios from "axios";
 
@@ -69,9 +71,11 @@ const ApplicationForm = () => {
   );
 
   return (
-    <div>
-      <h1>Application Form</h1>
-      <form onSubmit={handleSubmitForm}>
+    <TripFormContainer>
+      <img src={applyForm} alt="Apply" />
+
+      <h1>Apply for a trip</h1>
+      <TripForm onSubmit={handleSubmitForm}>
         <label htmlFor="name">Name: </label>
         <input
           value={applicationName}
@@ -136,9 +140,9 @@ const ApplicationForm = () => {
             })}
         </select>
         <button type="submit">Submit Application</button>
-      </form>
+      </TripForm>
       <button onClick={goHome}>Home</button>
-    </div>
+    </TripFormContainer>
   );
 };
 
