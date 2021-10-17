@@ -26,8 +26,8 @@ export const useGetTrips = (url) => {
   return [trips, isLoading, error, getTrips];
 };
 
-export const useGetDetails = (url, initialState) => {
-  const [trip, setTrip] = useState(initialState);
+export const useGetDetails = (url) => {
+  const [trip, setTrip] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const token = window.localStorage.getItem("token");
@@ -49,7 +49,7 @@ export const useGetDetails = (url, initialState) => {
   };
   useEffect(() => {
     tripDetails();
-  }, [url]);
+  }, []);
 
   return [trip, isLoading, error, tripDetails];
 };

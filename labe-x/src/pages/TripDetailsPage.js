@@ -2,6 +2,9 @@ import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import { useGetDetails } from "../hooks/CustomHooks";
 import { useState } from "react";
+import tripDetailsPage from "../style/images/tripDetailsPage.svg";
+import { TripDetailsContainer, TripDetailsPageContainer } from "../style/style";
+import ApprovedCandidatesCard from "../components/ApprovedCandidatesCard";
 
 const TripDetailsPage = () => {
   const [approvedCandidates, setApprovedCandidates] = useState([]);
@@ -15,8 +18,7 @@ const TripDetailsPage = () => {
   };
 
   const [trip, isLoading, error, tripDetails] = useGetDetails(
-    `https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria/trip/${params.id}`,
-    {}
+    `https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria/trip/${params.id}`
   );
 
   const approveCandidate = (candidateId, tripId, candidateName) => {
@@ -74,25 +76,29 @@ const TripDetailsPage = () => {
     approved &&
     approved.map((candidate) => {
       return (
-        <div key={candidate.id}>
-          <p>Name: {candidate.name}</p>
-          <p>Age: {candidate.age}</p>
-          <br />
-        </div>
+        <ApprovedCandidatesCard
+          key={candidate.id}
+          name={candidate.name}
+          age={candidate.age}
+          country={candidate.country}
+          applicationText={candidate.applicationText}
+        />
       );
     });
 
   return (
-    <div>
+    <TripDetailsPageContainer>
       {isLoading && <h1>Carregando...</h1>}
       {!isLoading && error && <h1>Erro ao carregar detalhes da viagem</h1>}
-      <h1>Trip Details Page</h1>
-      <h3>Name: {trip.name}</h3>
-      <p>Planet: {trip.planet}</p>
-      <p>Trip Date: {trip.date}</p>
-      <p>Description: {trip.description}</p>
-      <p>Duration: {trip.durationInDays}</p>
-      <br />
+      <img src={tripDetailsPage} alt="" />
+      <TripDetailsContainer>
+        <h1>Trip Details Page</h1>
+        <h3>Name: {trip && trip.name}</h3>
+        <p>Planet: {trip && trip.planet}</p>
+        <p>Trip Date: {trip && trip.date}</p>
+        <p>Description: {trip && trip.description}</p>
+        <p>Duration: {trip && trip.durationInDays}</p>
+      </TripDetailsContainer>
       {candidates &&
         candidates.map((candidate) => {
           return (
@@ -101,7 +107,6 @@ const TripDetailsPage = () => {
               <p>Name: {candidate.name}</p>
               <p>Age: {candidate.age}</p>
               <p>Country: {candidate.country}</p>
-              <p>Reason: {candidate.applicationText}</p>
               <p>Profession: {candidate.profession}</p>
               <button
                 value={candidate.id}
@@ -126,13 +131,12 @@ const TripDetailsPage = () => {
       <br />
       <h2>Approved Candidates:</h2>
 
-      {approved || showApprovedCandidates}
-      {!approved && showApprovedCandidates}
+      {showApprovedCandidates}
 
       <br />
 
       <button onClick={goBack}>Voltar</button>
-    </div>
+    </TripDetailsPageContainer>
   );
 };
 

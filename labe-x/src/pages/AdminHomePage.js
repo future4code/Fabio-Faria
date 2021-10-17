@@ -3,6 +3,10 @@ import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 
+import admPage from "../style/images/admPage.svg";
+import { AdmPageButonsCard, AdmPageContainer } from "../style/style";
+import AdmPageCard from "../components/AdmPageCard";
+
 const AdminHomePage = () => {
   const [trips, isLoading, error, getTrips] = useGetTrips(
     "https://us-central1-labenu-apis.cloudfunctions.net/labeX/fabio-faria/trips"
@@ -59,27 +63,30 @@ const AdminHomePage = () => {
     trips &&
     trips.map((trip) => {
       return (
-        <div key={trip.id}>
-          <li>{trip.name}</li>
-          <li>{trip.planet}</li>
-
-          <button onClick={() => deleteTrip(trip.id)}>X</button>
-          <button onClick={() => showTripDetails(trip.id)}>Details</button>
-          <br />
-        </div>
+        <AdmPageCard
+          key={trip.id}
+          id={trip.id}
+          name={trip.name}
+          planet={trip.planet}
+          showTripDetails={showTripDetails}
+          deleteTrip={deleteTrip}
+        />
       );
     });
   return (
-    <div>
+    <AdmPageContainer>
+      <img src={admPage} alt="Adm Page" />
       <h1>Admin Home Page</h1>
       {isLoading && <p>Loading...</p>}
       {!isLoading && error && <p>Erro</p>}
       {!isLoading && !error && showTrips}
-      <button onClick={createTrip}>Create a Trip</button>
-      <button onClick={clearLocalStorage}>Logout</button>
-      <button onClick={goHome}>Home</button>
-      <button onClick={goBack}>Previous Page</button>
-    </div>
+      <AdmPageButonsCard>
+        <button onClick={createTrip}>Create a Trip</button>
+        <button onClick={clearLocalStorage}>Logout</button>
+        <button onClick={goHome}>Home</button>
+        <button onClick={goBack}>Previous Page</button>
+      </AdmPageButonsCard>
+    </AdmPageContainer>
   );
 };
 

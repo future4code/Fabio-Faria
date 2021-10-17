@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
+import { CreateTripCardStyle, CreateTripFormStyle } from "../style/style";
+
 const CreateTripPage = () => {
   const [applicationName, setApplicationName] = useState("");
   const [applicationDescription, setApplicationDescription] = useState("");
@@ -69,9 +71,9 @@ const CreateTripPage = () => {
   };
 
   return (
-    <div>
+    <CreateTripCardStyle>
       <h1>Create Trip</h1>
-      <form onSubmit={handleSubmitForm} action="create trip">
+      <CreateTripFormStyle onSubmit={handleSubmitForm} action="create trip">
         <label htmlFor="name">Name</label>
         <input
           onChange={handleApplicationName}
@@ -114,10 +116,10 @@ const CreateTripPage = () => {
           placeholder="Duration"
         />
         <button type="submit">Submit</button>
-      </form>
+      </CreateTripFormStyle>
       <button onClick={goHome}>Home</button>
       <button onClick={goBack}>Previous Page</button>
-    </div>
+    </CreateTripCardStyle>
   );
 };
 
