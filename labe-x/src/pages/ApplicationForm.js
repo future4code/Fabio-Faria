@@ -93,7 +93,7 @@ const ApplicationForm = () => {
           min="18"
           required
         />
-        <label htmlFor="reason">Why you wan't to go: </label>
+        <label htmlFor="reason">Why you want to go: </label>
         <input
           value={applicationReason}
           onChange={handleReasonChange}

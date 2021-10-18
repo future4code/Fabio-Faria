@@ -37,6 +37,14 @@ export const TripCard = styled.div`
   height: 20%;
   margin: 10px;
   background-color: #344966;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    align-items: center;
+    padding: 10px;
+  }
 `;
 
 export const TripCardContainer = styled.div`
@@ -59,6 +67,14 @@ export const TripCardContainer = styled.div`
     height: 40%;
     margin-top: 2%;
   }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100%;
+    align-items: center;
+    padding: 10px;
+  }
 `;
 
 export const TripFormContainer = styled.div`
@@ -78,6 +94,11 @@ export const TripFormContainer = styled.div`
     margin: 10px;
     background-color: #bbc5aa;
     padding: 4px;
+  }
+  @media (max-width: 768px) {
+    img {
+      width: 100%;
+    }
   }
 `;
 
