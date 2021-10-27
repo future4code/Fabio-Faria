@@ -4,10 +4,11 @@ import { FeedPageContainer } from "./style";
 import useRequestData from "../../services/PostAccess/GetPost";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 import { BASE_URL } from "../../global/constants";
+import NewPost from "../../components/NewPost";
 
 const FeedPage = () => {
   const feed = useRequestData([], `${BASE_URL}/posts`);
-  console.log(feed);
+
   const showFeed =
     feed &&
     feed.map((post) => {
@@ -19,6 +20,7 @@ const FeedPage = () => {
     <>
       <FeedPageContainer>
         <Header />
+        <NewPost />
         {showFeed}
       </FeedPageContainer>
     </>

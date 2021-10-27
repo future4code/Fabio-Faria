@@ -11,7 +11,7 @@ const Router = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/feed" component={FeedPage} />
-        <Route exact path="feed/:post" component={PostPage} />
+        <Route exact path="/posts/:post/comments" component={PostPage} />
         <Route exact path="/" component={FeedPage} />
         <Route component={() => <h1>404</h1>} />
       </Switch>

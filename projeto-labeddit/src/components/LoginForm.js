@@ -3,6 +3,8 @@ import { LoginFormContainer, LoginPageContainer } from "./style";
 import { login } from "../services/AppAccess/SignupLogin";
 import { useHistory } from "react-router";
 import useUnprotectedPage from "../Hooks/useUprotectedPage";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const LoginForm = () => {
   const [form, onChange, clearForm] = useForm({ email: "", password: "" });
@@ -18,8 +20,10 @@ const LoginForm = () => {
   return (
     <LoginPageContainer>
       <LoginFormContainer onSubmit={onSubmitForm}>
-        <label>Email:</label>
-        <input
+        <TextField
+          id="outlined-basic"
+          label="Email:"
+          variant="outlined"
           type="email"
           placeholder="Email"
           required
@@ -27,8 +31,11 @@ const LoginForm = () => {
           value={form.email}
           onChange={onChange}
         />
-        <label>Password:</label>
-        <input
+
+        <TextField
+          id="outlined-basic"
+          label="Password:"
+          variant="outlined"
           type="password"
           placeholder="Password"
           required
@@ -36,7 +43,9 @@ const LoginForm = () => {
           value={form.password}
           onChange={onChange}
         />
-        <button type="submit">Login</button>
+        <Button variant="contained" color="success" type="submit">
+          Login
+        </Button>
       </LoginFormContainer>
     </LoginPageContainer>
   );

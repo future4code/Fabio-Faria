@@ -69,14 +69,14 @@ export const SignupPageContainer = styled.div`
 export const PostCardStyle = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   margin: 10px;
-  padding: 22px;
+  padding: 52px;
   background-color: #2d080a;
   color: white;
-  margin-left: 30%;
   box-sizing: border-box;
 `;
 
@@ -95,4 +95,12 @@ export const PostComments = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 4px;
+`;
+
+export const NewPostContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  justify-content: space-evenly;
+  align-items: center;
 `;

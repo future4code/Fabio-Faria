@@ -16,7 +16,7 @@ export const signUp = (body, clearForm) => {
       clearForm();
     })
     .catch((err) => {
-      alert(err);
+      alert(err.response.data.message);
     });
 };
 
@@ -30,6 +30,6 @@ export const login = (body, clearForm, history) => {
       clearForm();
     })
     .catch((err) => {
-      alert(err);
+      alert(err.response.data.message);
     });
 };

@@ -5,9 +5,7 @@ export const FeedPageContainer = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100%;
-  gap: 1rem;
   align-items: center;
-  justify-self: center;
-
+  justify-content: center;
   background-color: #ffcdbc;
 `;

@@ -11,5 +11,5 @@ export const goToFeed = (history) => {
 };
 
 export const goToPost = (history, post) => {
-  history.push(`/feed/${post}`);
+  history.push(`/posts/${post}/comments`);
 };
