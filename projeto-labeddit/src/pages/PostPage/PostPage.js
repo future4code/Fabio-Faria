@@ -1,5 +1,35 @@
+import PostPageCard from "../../components/PostPageCard";
+import { useParams } from "react-router";
+import { BASE_URL } from "../../global/constants";
+import useProtectedPage from "../../Hooks/useProtectedPage";
+import useRequestData from "../../services/PostAccess/GetPost";
+import Header from "../../components/Header";
+import { PostCommentsContainer, Container } from "./style";
+import NewComment from "../../components/NewComment";
+
 const PostPage = () => {
-  return <div>Post Page</div>;
+  const params = useParams();
+  useProtectedPage();
+
+  const postComment = useRequestData(
+    [],
+    `${BASE_URL}/posts/${params.post}/comments`
+  );
+
+  const showPost =
+    postComment &&
+    postComment.map((post) => {
+      return <PostPageCard key={post.id} post={post} />;
+    });
+  return (
+    <Container>
+      <Header />
+      <PostCommentsContainer>
+        <NewComment />
+        {showPost}
+      </PostCommentsContainer>
+    </Container>
+  );
 };
 
 export default PostPage;

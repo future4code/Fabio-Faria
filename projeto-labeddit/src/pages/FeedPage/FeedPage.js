@@ -5,6 +5,7 @@ import useRequestData from "../../services/PostAccess/GetPost";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 import { BASE_URL } from "../../global/constants";
 import NewPost from "../../components/NewPost";
+import { Container } from "@material-ui/core";
 
 const FeedPage = () => {
   const feed = useRequestData([], `${BASE_URL}/posts`);
@@ -18,11 +19,12 @@ const FeedPage = () => {
   useProtectedPage();
   return (
     <>
-      <FeedPageContainer>
+      <Container maxWidth="sm">
         <Header />
         <NewPost />
+
         {showFeed}
-      </FeedPageContainer>
+      </Container>
     </>
   );
 };
