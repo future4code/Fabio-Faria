@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <h1>Header</h1>
+      <h1>Labeditt</h1>
       <HeaderButtons>
         <Button variant="contained" onClick={() => goToSignup(history)}>
           Signup

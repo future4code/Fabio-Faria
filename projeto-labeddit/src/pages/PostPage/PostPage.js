@@ -11,7 +11,7 @@ const PostPage = () => {
   const params = useParams();
   useProtectedPage();
 
-  const postComment = useRequestData(
+  const [postComment, getPosts] = useRequestData(
     [],
     `${BASE_URL}/posts/${params.post}/comments`
   );
@@ -25,7 +25,7 @@ const PostPage = () => {
     <Container>
       <Header />
       <PostCommentsContainer>
-        <NewComment />
+        <NewComment getPosts={getPosts} />
         {showPost}
       </PostCommentsContainer>
     </Container>

@@ -1,14 +1,13 @@
 import Header from "../../components/Header";
 import PostCard from "../../components/PostCard";
-import { FeedPageContainer } from "./style";
 import useRequestData from "../../services/PostAccess/GetPost";
 import useProtectedPage from "../../Hooks/useProtectedPage";
 import { BASE_URL } from "../../global/constants";
 import NewPost from "../../components/NewPost";
-import { Container } from "@material-ui/core";
+import { FeedPageContainer } from "./style";
 
 const FeedPage = () => {
-  const feed = useRequestData([], `${BASE_URL}/posts`);
+  const [feed, getPost] = useRequestData([], `${BASE_URL}/posts`);
 
   const showFeed =
     feed &&
@@ -19,12 +18,11 @@ const FeedPage = () => {
   useProtectedPage();
   return (
     <>
-      <Container maxWidth="sm">
+      <FeedPageContainer>
         <Header />
-        <NewPost />
-
+        <NewPost getPost={getPost} />
         {showFeed}
-      </Container>
+      </FeedPageContainer>
     </>
   );
 };

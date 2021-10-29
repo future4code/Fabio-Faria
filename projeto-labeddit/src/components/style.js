@@ -69,12 +69,9 @@ export const SignupPageContainer = styled.div`
 export const PostCardStyle = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  margin: 10px;
-  padding: 52px;
+  width: 40vw;
+  margin: 4px;
   background-color: #2d080a;
   color: white;
   box-sizing: border-box;
@@ -92,9 +89,13 @@ export const PostButtons = styled.div`
 export const PostComments = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  width: 20%;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 4px;
+  button {
+    margin-left: 4px;
+  }
 `;
 
 export const NewPostContainer = styled.form`

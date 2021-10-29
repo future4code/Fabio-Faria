@@ -7,6 +7,7 @@ const header = {
     Authorization: localStorage.getItem("token"),
   },
 };
+
 const createPost = (body, clearForm) => {
   axios
     .post(`${BASE_URL}/posts`, body, header)

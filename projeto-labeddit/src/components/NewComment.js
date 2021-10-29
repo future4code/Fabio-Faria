@@ -4,12 +4,13 @@ import { useParams } from "react-router";
 import { BASE_URL } from "../global/constants";
 import { NewCommentContainer, NewCommentForm } from "./style";
 
-const NewComment = () => {
+const NewComment = ({ getPosts }) => {
   const [form, onChange, clearForm] = useForm({ body: "" });
   const params = useParams();
   const handleSubmit = (e) => {
     e.preventDefault();
     createComment(`${BASE_URL}/posts/${params.post}/comments`, form, clearForm);
+    getPosts();
     clearForm();
     console.log(form);
   };

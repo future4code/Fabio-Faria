@@ -25,7 +25,7 @@ const useRequestData = (initialData, url) => {
       });
   };
 
-  return data;
+  return [data, getPost];
 };
 
 export default useRequestData;

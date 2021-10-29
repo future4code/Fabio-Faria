@@ -2,6 +2,8 @@ import useForm from "../Hooks/useForm";
 import { SignupPageContainer, SignupPageForm } from "./style";
 import { signUp } from "../services/AppAccess/SignupLogin";
 import useUnprotectedPage from "../Hooks/useUprotectedPage";
+import Button from "@material-ui/core/Button";
+import { TextField } from "@mui/material";
 
 const SignupForm = () => {
   const [form, onChange, clearForm] = useForm({
@@ -21,24 +23,32 @@ const SignupForm = () => {
   return (
     <SignupPageContainer>
       <SignupPageForm onSubmit={handleSubmitForm}>
-        <label>Username:</label>
-        <input
+        <TextField
+          id="standard-basic"
+          label="Username"
+          variant="standard"
           type="text"
           name={"username"}
           value={form.username}
           onChange={onChange}
           required
         />
-        <label>Email:</label>
-        <input
+
+        <TextField
+          id="standard-basic"
+          label="Email"
+          variant="standard"
           type="email"
           name={"email"}
           value={form.email}
           onChange={onChange}
           required
         />
-        <label>Password:</label>
-        <input
+
+        <TextField
+          id="standard-basic"
+          label="Password"
+          variant="standard"
           type="password"
           name={"password"}
           value={form.password}
@@ -46,7 +56,9 @@ const SignupForm = () => {
           minLength="8"
           required
         />
-        <button type="submit">Submit</button>
+        <Button variant="contained" type="submit">
+          Submit
+        </Button>
       </SignupPageForm>
     </SignupPageContainer>
   );

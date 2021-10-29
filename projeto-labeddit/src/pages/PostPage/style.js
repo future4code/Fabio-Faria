@@ -6,7 +6,7 @@ export const PostCommentsContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 100vw;
-
+  height: 100%;
   background-color: #ffcdbc;
 `;
 
@@ -16,5 +16,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
+
   box-sizing: border-box;
 `;

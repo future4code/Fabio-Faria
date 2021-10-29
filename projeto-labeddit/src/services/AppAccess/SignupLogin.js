@@ -12,7 +12,6 @@ export const signUp = (body, clearForm) => {
   axios
     .post(`${BASE_URL}/users/signup`, body, header)
     .then((res) => {
-      localStorage.setItem("token", res.data.token);
       clearForm();
     })
     .catch((err) => {

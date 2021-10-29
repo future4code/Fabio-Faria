@@ -1,18 +1,19 @@
 import { NewPostContainer } from "./style";
 import useForm from "../Hooks/useForm";
 import createPost from "../services/PostAccess/CreatePost";
-// import useProtectedPage from "../Hooks/useProtectedPage";
+import useProtectedPage from "../Hooks/useProtectedPage";
 
-const NewPost = () => {
+const NewPost = ({ getPost }) => {
   const [form, onChange, clearForm] = useForm({ title: "", body: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     createPost(form, clearForm);
+    getPost();
     clearForm();
   };
 
-  //   useProtectedPage();
+  useProtectedPage();
   return (
     <NewPostContainer onSubmit={handleSubmit}>
       <h3>New Post</h3>
