@@ -36,6 +36,16 @@ const getUserById = async (id: string): Promise<any> => {
     return result[0]
 }
 
+const editUser = async (id: string, name: string, nickname: string): Promise<void> => {
+    await connection
+    .from("Users")
+    .where({id})
+    .update({
+        name,
+        nickname
+    })
+}
+
 app.post('/user', async (req: Request, res: Response) => {
     try {
         if(!req.body.id || !req.body.name || !req.body.email || !req.body.nickname){
@@ -53,7 +63,7 @@ app.post('/user', async (req: Request, res: Response) => {
     }
 })
 
-app.get('/users/:id', async(req: Request, res: Response) => {
+app.get('/user/:id', async(req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const user = await getUserById(id);
@@ -62,6 +72,19 @@ app.get('/users/:id', async(req: Request, res: Response) => {
             throw new Error('User not found')
         }
         res.status(200).send(user);
+    } catch (err: any) {
+        res.status(400).send({
+            Message: err.message
+        })
+    }
+})
+
+app.put('/user/edit/:id', async(req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const { name, nickname } = req.body;
+        await editUser(id, name, nickname);
+        res.status(200).send("User Edited");
     } catch (err: any) {
         res.status(400).send({
             Message: err.message
