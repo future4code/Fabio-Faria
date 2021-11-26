@@ -17,13 +17,13 @@ const server = app.listen(process.env.PORT || 3003, () => {
     }
 })
 
-const createUser = async (id: string, name: string, email: string, nickname: string): Promise<void>  => {
+const createUser = async (id: string, title: string, email: string, nicktitle: string): Promise<void>  => {
     await connection
     .insert({
         id,
-        name,
+        title,
         email,
-        nickname
+        nicktitle
     })
     .into("Users")
 }
@@ -36,25 +36,24 @@ const getUserById = async (id: string): Promise<any> => {
     return result[0]
 }
 
-const editUser = async (id: string, name: string, nickname: string): Promise<void> => {
+const editUser = async (id: string, title: string, nicktitle: string): Promise<void> => {
     await connection
     .from("Users")
     .where({id})
     .update({
-        name,
-        nickname
+        title,
+        nicktitle
     })
 }
 
-const createTask = async (id: string, name: string, comment: string, status: string, task_date: Date, user_id: string): Promise<void> => {
+const createTask = async (id: string, title: string, description: string, limiteDate: any, creatorUserId: string): Promise<void> => {
     await connection
     .insert({
         id,
-        name,
-        comment,
-        status,
-        task_date,
-        user_id
+        title,
+        description,
+        limiteDate,
+        creatorUserId
     })
     .into("Tasks")
 }
@@ -66,14 +65,22 @@ const getAllTasks = async (): Promise<any> => {
     return result
 }
 
+const getTaskById = async (id: string): Promise<any> => {
+    const result = await connection
+    .select("*")
+    .from("Tasks")
+    .where({id})
+    return result[0]
+}
+
 app.post('/user', async (req: Request, res: Response) => {
     try {
-        if(!req.body.id || !req.body.name || !req.body.email || !req.body.nickname){
+        if(!req.body.id || !req.body.title || !req.body.email || !req.body.nicktitle){
             res.statusCode = 400;
             throw new Error('Missing Data')}
             
-        const { id, name, email, nickname } = req.body;
-        await createUser(id.toString(), name, email, nickname);
+        const { id, title, email, nicktitle } = req.body;
+        await createUser(id.toString(), title, email, nicktitle);
         res.status(200).send("User Created");
     } catch (err: any) {
         res.status(400).send({
@@ -85,14 +92,13 @@ app.post('/user', async (req: Request, res: Response) => {
 
 app.post('/task', async(req: Request, res: Response) => {
     try {
-        
 
-        if(!req.body.id || !req.body.name || !req.body.comment || !req.body.status || !req.body.task_date || !req.body.user_id){
+        if(!req.body.id || !req.body.title || !req.body.description || !req.body.limiteDate || !req.body.creatorUserId){
             res.statusCode = 400;
             throw new Error('Missing Data')}
             
-        const { id, name, comment, status, task_date, user_id } = req.body;
-        await createTask(id.toString(), name, comment, status, task_date, user_id);
+        const { id, title, description, limiteDate, creatorUserId } = req.body;
+        await createTask(id.toString(), title, description, limiteDate, creatorUserId);
         res.status(200).send("Task Created");
     } catch (err: any) {
         res.status(400).send({
@@ -130,16 +136,32 @@ app.get('/user/:id', async(req: Request, res: Response) => {
     }
 })
 
+app.get('/task/:id', async(req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const task = await getTaskById(id);
+        if(!task){
+            res.statusCode = 404;
+            throw new Error('Task not found')
+        }
+        res.status(200).send(task);
+    } catch (err: any) {
+        res.status(400).send({
+            Message: err.message
+        })
+    }
+})
+
 app.put('/user/edit/:id', async(req: Request, res: Response) => {
     try {
-        if(!req.body.id || !req.body.name || !req.body.nickname){
+        if(!req.body.id || !req.body.title || !req.body.nicktitle){
             res.statusCode = 400
             throw new Error('Missing Data')
         }
 
         const { id } = req.params;
-        const { name, nickname } = req.body;
-        await editUser(id, name, nickname);
+        const { title, nicktitle } = req.body;
+        await editUser(id, title, nicktitle);
         res.status(200).send("User Edited");
     } catch (err: any) {
         res.status(400).send({
