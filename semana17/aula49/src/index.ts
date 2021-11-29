@@ -51,22 +51,4 @@ const getAllUsers = async (req: Request, res: Response): Promise<void> => {
 app.get('/users', getAllUsers)
 
 
-// app.get('/users', async (req: Request, res: Response) => {
-//     const name = req.query.name;
-//     try {
-//         const result = await getAllUsers(name);
-//         res.status(200).send(result);
-//     } catch (error: any) {
-//         res.status(400).send(error)
-//     }
-// })
 
-// app.get('/users', async (req: Request, res: Response) => {
-//     const query = req.query.query;
-//     try {
-//         const result = await getAllUsers(query);
-//         res.status(200).send(result);
-//     } catch (error: any) {
-//         res.status(400).send(error)
-//     }
-// })
