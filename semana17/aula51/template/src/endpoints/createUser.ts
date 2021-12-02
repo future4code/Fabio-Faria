@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { connection } from "../data/connection";
-import { mailTransporter } from "../services/mailTransporter";
 import { user } from "../types";
 
 export default async function createUser(
