@@ -1,6 +1,8 @@
 import express, {Express, Request, Response} from 'express';
 import cors from 'cors';
 import {AddressInfo} from 'net';
+import { addUser, getAllUsers } from './endpoints/users';
+
 
 const app: Express = express();
 
@@ -15,3 +17,7 @@ const server = app.listen(process.env.PORT || 3003, () => {
         console.error(`Failure upon starting server.`);
     }
 })
+
+app.post('/user', addUser);
+
+app.get('/all/users', getAllUsers);
