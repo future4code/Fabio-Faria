@@ -1,14 +1,20 @@
+export enum COMPETITION_STATUS {
+    OPEN = "open",
+    CLOSED = "closed"
+}
+
 export interface Competition {
     id: string;
-    competition: string;
-    athelete: string;
-    value: number;
-    unity: string;
+    competitions: string;
+    startingDate: Date;
+    endingDate: Date;
+    status: COMPETITION_STATUS;
+
 }
 
 export class CompetititonInputDTO {
-    competition: string;
-    athelete: string;
-    value: number;
-    unity: string;
+    competitions: string;
+    startingDate: Date;
+    endingDate: Date;
+    status: COMPETITION_STATUS;
 }
