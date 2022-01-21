@@ -8,8 +8,8 @@ export class CompetitionDatabase extends BaseDatabase {
             .insert({
                 id: competition.id,
                 competitions: competition.competitions,
-                startingDate: competition.startingDate.toISOString().substring(0, 10),
-                endingDate: competition.endingDate.toISOString().substring(0, 10),
+                startingDate: competition.startingDate,
+                endingDate: competition.endingDate,
                 status: competition.status
             })
         }

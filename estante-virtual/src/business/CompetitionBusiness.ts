@@ -16,8 +16,8 @@ export class CompetitionBusiness {
             const competition: Competition = {
                 id: id,
                 competitions: input.competitions,
-                startingDate: new Date(),
-                endingDate: new Date(),
+                startingDate: input.startingDate,
+                endingDate: input.endingDate,
                 status: input.status
             }
 
